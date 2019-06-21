@@ -1,0 +1,62 @@
+# depslib dependency file v1.0
+1560340721 source:/home/baqueta/Desktop/trab2/Position.c
+	"Position.h"
+	<stdlib.h>
+
+1560340399 /home/baqueta/Desktop/trab2/Position.h
+
+1560351626 source:/home/baqueta/Desktop/trab2/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Maze.h"
+
+1560351380 /home/baqueta/Desktop/trab2/Maze.h
+	"Position.h"
+
+1560363000 source:/home/baqueta/Desktop/trab2/Maze.c
+	"Maze.h"
+	<stdlib.h>
+	<stdio.h>
+
+1560363770 source:/home/cledson/Documents/Trab2/Maze.c
+	"Maze.h"
+	<stdlib.h>
+	<stdio.h>
+
+1560904460 /home/cledson/Documents/Trab2/Maze.h
+	"Position.h"
+
+1560340399 /home/cledson/Documents/Trab2/Position.h
+
+1560340721 source:/home/cledson/Documents/Trab2/Position.c
+	"Position.h"
+	<stdlib.h>
+
+1561135023 source:/home/cledson/Documents/Trab2/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Maze.h"
+	"Player.h"
+
+1560904168 source:/home/cledson/Documents/Trab2/Enemy.c
+	"Enemy.h"
+
+1560904492 /home/cledson/Documents/Trab2/Enemy.h
+	"Position.h"
+	"Maze.h"
+
+1560904178 source:/home/cledson/Documents/Trab2/Exit.c
+	"Exit.h"
+
+1560904513 /home/cledson/Documents/Trab2/Exit.h
+	"Position.h"
+	"Maze.h"
+
+1561134661 source:/home/cledson/Documents/Trab2/Player.c
+	"Player.h"
+	<stdlib.h>
+
+1560989979 /home/cledson/Documents/Trab2/Player.h
+	"Position.h"
+	"Maze.h"
+

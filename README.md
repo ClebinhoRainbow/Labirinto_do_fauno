@@ -1,1 +1,2 @@
-# Labirinto_do_fauno
+# LabirintoDoFauno
+trabalho de prog 2
