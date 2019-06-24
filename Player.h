@@ -14,6 +14,5 @@ typedef struct
 Player * criaPlayer(Maze* maze);
 void andar(Player* player,Maze* maze,char key);
 void destroiPlayer(Player* player);
-int verifica_espaco_livre(Player* player,Maze* maze,char key);
 
 #endif // PLAYER_H_INCLUDED
