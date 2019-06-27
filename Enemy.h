@@ -17,7 +17,7 @@ typedef struct
 } Enemy;
 Enemy * criaInimigo(Maze* maze);
 void aumenta_salto_inimigo(Maze* maze,Enemy* enemy);
-void andarInimigo(Enemy* enemy,Maze* maze);
+int andarInimigo(Enemy* enemy,Maze* maze,Player * player);
 int sondagem(Maze * maze,Enemy *inimigo,Player * player);
 void Salto(Maze* maze);
 void rastro(Maze* maze);

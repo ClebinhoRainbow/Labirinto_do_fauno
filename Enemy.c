@@ -2,9 +2,9 @@
 #include "Player.h"
 #define NUMERO_INIMIGOS 4
 #include <stdlib.h>
-//era pra  ser7 mas preferi botar 8 ao inves de <= ou >=
-//ma funcao sondagem
-#define LIMITE_SONDAGEM 8
+#define LINHAS 21
+#define COLUNAS 21
+#define LIMITE_SONDAGEM 7
 #include <stdio.h>
 Enemy * criaInimigo(Maze* maze)
 {
@@ -30,10 +30,10 @@ Enemy * criaInimigo(Maze* maze)
             if(maze->matriz[i][j].dado==inimigo[c].simbolo_exibido)
             {
 
-                inimigo[c].posisao_inicial_inimigo.x=j;
-                inimigo[c].posisao_inicial_inimigo.y=i;
-                inimigo[c].posisao_atual_inimigo.x=j;
-                inimigo[c].posisao_atual_inimigo.y=i;
+                inimigo[c].posisao_inicial_inimigo.x=i;
+                inimigo[c].posisao_inicial_inimigo.y=j;
+                inimigo[c].posisao_atual_inimigo.x=i;
+                inimigo[c].posisao_atual_inimigo.y=j;
                 if(c<NUMERO_INIMIGOS)
                 {
                     c+=1;
@@ -69,141 +69,196 @@ void aumenta_salto_inimigo(Maze* maze,Enemy* enemy)
 
 
 }
+///   maze->matriz[inimigo->posisao_atual_inimigo.x][inimigo->posisao_atual_inimigo.y-3].dado='1';///esquerda
+///    maze->matriz[inimigo->posisao_atual_inimigo.x][inimigo->posisao_atual_inimigo.y+3].dado='2';///direita
+ ///   maze->matriz[inimigo->posisao_atual_inimigo.x-3][inimigo->posisao_atual_inimigo.y].dado='3';///cima
+///    maze->matriz[inimigo->posisao_atual_inimigo.x+3][inimigo->posisao_atual_inimigo.y].dado='4';///baixo
+
+
+
 int sondagem(Maze * maze,Enemy *inimigo,Player * player)
 {
+printf("sondagem\n");
+    int i,flag_A=1,flag_D=1,flag_S=1,flag_W=1;
 
-    int i,j ;
-    for(i=1; i<= LIMITE_SONDAGEM; i++)
+
+    for(i=0; i<=LIMITE_SONDAGEM; i++)
     {
-        if(maze->matriz[inimigo->posisao_atual_inimigo.y][inimigo->posisao_atual_inimigo.x+i].dado!='#')
+        if((inimigo->posisao_atual_inimigo.y-1) > 0)
         {
 
-            if( maze->matriz[inimigo->posisao_atual_inimigo.y][inimigo->posisao_atual_inimigo.x+i].dado=='X')
+            if(maze->matriz[inimigo->posisao_atual_inimigo.x][inimigo->posisao_atual_inimigo.y-i].dado!='#'&&flag_W)
             {
+                if(maze->matriz[inimigo->posisao_atual_inimigo.x][inimigo->posisao_atual_inimigo.y-i].dado=='X')
+                {
+                    inimigo->alvo.x = inimigo->posisao_atual_inimigo.x;
+                    inimigo->alvo.y = inimigo->posisao_atual_inimigo.y-i;
+                    return 1;
 
-                inimigo->alvo.x=player->posicao_atual_player.x+i;
-                inimigo->alvo.y=player->posicao_atual_player.y;
-                return 1;
-                ///return 'd';
+                }
+            }
+            else if(maze->matriz[inimigo->posisao_atual_inimigo.x][inimigo->posisao_atual_inimigo.y-i].dado=='#')
+                flag_W=0;
+        }
+        if( (inimigo->posisao_atual_inimigo.y+1) < LINHAS)
+        {
+
+
+            if(maze->matriz[inimigo->posisao_atual_inimigo.x][inimigo->posisao_atual_inimigo.y+i].dado!='#' && flag_D)
+            {
+                if(maze->matriz[inimigo->posisao_atual_inimigo.x][inimigo->posisao_atual_inimigo.y+i].dado=='X')
+                {
+
+                    inimigo->alvo.x=inimigo->posisao_atual_inimigo.x;
+                    inimigo->alvo.y=inimigo->posisao_atual_inimigo.y+i;
+                    return 1;
+
+                }
+
+            }
+            else if(maze->matriz[inimigo->posisao_atual_inimigo.x][inimigo->posisao_atual_inimigo.y+i].dado=='#')
+            {
+             flag_D=0;
 
             }
 
+
         }
-        if(maze->matriz[inimigo->posisao_atual_inimigo.y][inimigo->posisao_atual_inimigo.x-i].dado!='#')
+
+        if((inimigo->posisao_atual_inimigo.x-i) > 0)
         {
-
-            if( maze->matriz[inimigo->posisao_atual_inimigo.y][inimigo->posisao_atual_inimigo.x-i].dado=='X')
+            if(maze->matriz[inimigo->posisao_atual_inimigo.x-i][inimigo->posisao_atual_inimigo.y].dado!='#' &&flag_A)
             {
+                if(maze->matriz[inimigo->posisao_atual_inimigo.x-i][inimigo->posisao_atual_inimigo.y].dado=='X')
+                {
+                    inimigo->alvo.x=inimigo->posisao_atual_inimigo.x-i;
+                    inimigo->alvo.y=inimigo->posisao_atual_inimigo.y;
 
-                inimigo->alvo.x=player->posicao_atual_player.x-i;
-                inimigo->alvo.y=player->posicao_atual_player.y;
-                  return 1;
-                ///return 'a';
+                    return 1;
+
+                }
             }
-
+            else if(maze->matriz[inimigo->posisao_atual_inimigo.x-i][inimigo->posisao_atual_inimigo.y].dado!='#' )
+                flag_A=0;
         }
-        if(maze->matriz[inimigo->posisao_atual_inimigo.y+i][inimigo->posisao_atual_inimigo.x].dado!='#')
+        if((inimigo->posisao_atual_inimigo.x+i) < COLUNAS)
         {
-
-            if( maze->matriz[inimigo->posisao_atual_inimigo.y+i][inimigo->posisao_atual_inimigo.x].dado=='X')
+            if(maze->matriz[inimigo->posisao_atual_inimigo.x+i][inimigo->posisao_atual_inimigo.y].dado!='#' &&flag_S)
             {
+                if(maze->matriz[inimigo->posisao_atual_inimigo.x+i][inimigo->posisao_atual_inimigo.y].dado=='X')
+                {
+                    inimigo->alvo.x=inimigo->posisao_atual_inimigo.x+i;
+                    inimigo->alvo.y=inimigo->posisao_atual_inimigo.y;
 
-                inimigo->alvo.x=player->posicao_atual_player.x;
-                inimigo->alvo.y=player->posicao_atual_player.y+i;
-                  return 1;
-                ///return 's';
+                    return 1;
+
+                }
+
             }
-
+            else if(maze->matriz[inimigo->posisao_atual_inimigo.x+i][inimigo->posisao_atual_inimigo.y].dado=='#')
+                flag_S=0;
         }
-        if(maze->matriz[inimigo->posisao_atual_inimigo.y-i][inimigo->posisao_atual_inimigo.x].dado!='#')
-        {
-
-            if( maze->matriz[inimigo->posisao_atual_inimigo.y-i][inimigo->posisao_atual_inimigo.x].dado=='X')
-            {
-
-                inimigo->alvo.x=player->posicao_atual_player.x;
-                inimigo->alvo.y=player->posicao_atual_player.y-i;
-                  return 1;
-                ///return 'w';
-            }
-
-        }
-
-
     }
     return 0;
 
-    ///return '#';
 }
-void andarInimigo(Enemy* enemy,Maze* maze)
+int andarInimigo(Enemy* enemy,Maze* maze,Player * player)
 {
-    printf("%c o simbolo do inimigo\nta dentro do andarInimigo\n",enemy->simbolo_exibido);
-    if(enemy->alvo.x==enemy->posisao_atual_inimigo.x&&enemy->alvo.y==enemy->posisao_atual_inimigo.y)
-    {
-        printf("Ta no mesmo lugar\n");
-    }
-    if( enemy->alvo.x==enemy->posisao_atual_inimigo.x && enemy->alvo.y < enemy->posisao_atual_inimigo.y)
+printf("andar inimigo\n");
+    char key;
+    if((enemy->alvo.x != enemy->posisao_atual_inimigo.x )|| ( enemy->alvo.y != enemy->posisao_atual_inimigo.y))
     {
 
-        ///Acho que nao precisa desse if porque ja foi verificado se existe o '#' na funcao sondagem
-        if(maze->matriz[enemy->posisao_atual_inimigo.y-1][enemy->posisao_atual_inimigo.x].dado!='#')
+        if(enemy->alvo.x > enemy->posisao_atual_inimigo.x && maze->matriz[enemy->posisao_atual_inimigo.x+1][enemy->posisao_atual_inimigo.y].dado!='#')
         {
-            printf("oiw\n");
-            //printf("%c",maze->matriz[player->posicao_inicial_player.x][player->posicao_inicial_player.y].dado);
-            maze->matriz[enemy->posisao_atual_inimigo.y][enemy->posisao_atual_inimigo.x].dado='.';
-            maze->matriz[enemy->posisao_atual_inimigo.y-1][enemy->posisao_atual_inimigo.x].dado= enemy->simbolo_exibido;
-            enemy->posisao_atual_inimigo.y-=1;
-            // printf("%di%dj",player->posicao_atual_player.x,player->posicao_atual_player.y);
-        }
 
-
-    }
-if(enemy->alvo.x==enemy->posisao_atual_inimigo.x&&enemy->alvo.y>enemy->posisao_atual_inimigo.y)
-    {
-        if(maze->matriz[enemy->posisao_atual_inimigo.y+1][enemy->posisao_atual_inimigo.x].dado!='#')
-        {
-            printf("ois\n");
-            maze->matriz[enemy->posisao_atual_inimigo.y][enemy->posisao_atual_inimigo.x].dado='.';
-            maze->matriz[enemy->posisao_atual_inimigo.y+1][enemy->posisao_atual_inimigo.x].dado= enemy->simbolo_exibido;
-            enemy->posisao_atual_inimigo.y+=1;
-
-        }
-
-
-    }
-    if(enemy->alvo.x<enemy->posisao_atual_inimigo.x && enemy->alvo.y == enemy->posisao_atual_inimigo.y)
-    {
-        if(maze->matriz[enemy->posisao_atual_inimigo.y][enemy->posisao_atual_inimigo.x-1].dado!='#')
-        {
-            printf("oia\n");
-            maze->matriz[enemy->posisao_atual_inimigo.y][enemy->posisao_atual_inimigo.x].dado='.';
-            maze->matriz[enemy->posisao_atual_inimigo.y][enemy->posisao_atual_inimigo.x-1].dado= enemy->simbolo_exibido;
-            enemy->posisao_atual_inimigo.x-=1;
-
-        }
-
-
-    }
-    if(enemy->alvo.x>enemy->posisao_atual_inimigo.x && enemy->alvo.y == enemy->posisao_atual_inimigo.y)
-    {
-        if(maze->matriz[enemy->posisao_atual_inimigo.y][enemy->posisao_atual_inimigo.x+1].dado!='#')
-        {
-            printf("oid\n");
-            maze->matriz[enemy->posisao_atual_inimigo.y][enemy->posisao_atual_inimigo.x].dado='.';
-            maze->matriz[enemy->posisao_atual_inimigo.y][enemy->posisao_atual_inimigo.x+1].dado= enemy->simbolo_exibido;
+            maze->matriz[enemy->posisao_atual_inimigo.x][enemy->posisao_atual_inimigo.y].dado='.';
+            maze->matriz[enemy->posisao_atual_inimigo.x+1][enemy->posisao_atual_inimigo.y].dado= enemy->simbolo_exibido;
+            enemy->posisao_inicial_inimigo.y=enemy->posisao_atual_inimigo.y;
+            enemy->posisao_inicial_inimigo.x=enemy->posisao_atual_inimigo.x;
             enemy->posisao_atual_inimigo.x+=1;
 
+
+
+
+        }
+        if( enemy->alvo.x < enemy->posisao_atual_inimigo.x && maze->matriz[enemy->posisao_atual_inimigo.x-1][enemy->posisao_atual_inimigo.y].dado!='#')
+        {
+
+            maze->matriz[enemy->posisao_atual_inimigo.x][enemy->posisao_atual_inimigo.y].dado='.';
+            maze->matriz[enemy->posisao_atual_inimigo.x-1][enemy->posisao_atual_inimigo.y].dado= enemy->simbolo_exibido;
+            enemy->posisao_inicial_inimigo.y=enemy->posisao_atual_inimigo.y;
+            enemy->posisao_inicial_inimigo.x=enemy->posisao_atual_inimigo.x;
+            enemy->posisao_atual_inimigo.x-=1;
+
+
+        }
+        if( enemy->alvo.y > enemy->posisao_atual_inimigo.y && maze->matriz[enemy->posisao_atual_inimigo.x][enemy->posisao_atual_inimigo.y+1].dado!='#')
+        {
+
+            maze->matriz[enemy->posisao_atual_inimigo.x][enemy->posisao_atual_inimigo.y].dado='.';
+            maze->matriz[enemy->posisao_atual_inimigo.x][enemy->posisao_atual_inimigo.y+1].dado= enemy->simbolo_exibido;
+            enemy->posisao_inicial_inimigo.y=enemy->posisao_atual_inimigo.y;
+            enemy->posisao_inicial_inimigo.x=enemy->posisao_atual_inimigo.x;
+            enemy->posisao_atual_inimigo.y+=1;
+
+
+        }
+        if(enemy->alvo.y<enemy->posisao_atual_inimigo.y && maze->matriz[enemy->posisao_atual_inimigo.x][enemy->posisao_atual_inimigo.y-1].dado!='#')
+        {
+
+            maze->matriz[enemy->posisao_atual_inimigo.x][enemy->posisao_atual_inimigo.y].dado='.';
+            maze->matriz[enemy->posisao_atual_inimigo.x][enemy->posisao_atual_inimigo.y-1].dado= enemy->simbolo_exibido;
+            enemy->posisao_inicial_inimigo.y=enemy->posisao_atual_inimigo.y;
+            enemy->posisao_inicial_inimigo.x=enemy->posisao_atual_inimigo.x;
+            enemy->posisao_atual_inimigo.y-=1;
+
+
+
         }
 
+         scanf("%c",&key);
+        __fpurge(stdin);
+        andar(player,maze,key);
+        exibirLabirinto(maze);
 
+        return 0;
+
+    }
+    else
+        return 1;
+
+
+}
+///Problemas aqui
+void salto(Maze* maze)
+{
+    int salto=1;
+    int i , j;
+    for(i=0; i<LINHAS; i++)
+    {
+        for(j=0; j <COLUNAS; j++)
+        {
+            if(1)
+            {
+
+
+
+
+            }
+
+        }
     }
 
 
 
 }
-void salto(Maze* maze);
 void rastro(Maze* maze);
-///terminar depois
-void acaba_com_Player(Maze* maze);
-void destroiInimigo(Enemy* inimigo);
+void destroiInimigo(Enemy* inimigo)
+{
+
+    free(inimigo);
+
+
+}
 

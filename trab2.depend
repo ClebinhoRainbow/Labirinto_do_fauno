@@ -60,13 +60,13 @@
 	"Position.h"
 	"Maze.h"
 
-1561387484 source:/home/cledson/Documents/Labirinto_do_fauno/Enemy.c
+1561638510 source:/home/cledson/Documents/Labirinto_do_fauno/Enemy.c
 	"Enemy.h"
 	"Player.h"
 	<stdlib.h>
 	<stdio.h>
 
-1561386752 /home/cledson/Documents/Labirinto_do_fauno/Enemy.h
+1561557861 /home/cledson/Documents/Labirinto_do_fauno/Enemy.h
 	"Position.h"
 	"Maze.h"
 	"Player.h"
@@ -76,14 +76,16 @@
 1561172003 /home/cledson/Documents/Labirinto_do_fauno/Maze.h
 	"Position.h"
 
-1561172003 source:/home/cledson/Documents/Labirinto_do_fauno/Exit.c
+1561593802 source:/home/cledson/Documents/Labirinto_do_fauno/Exit.c
 	"Exit.h"
+	<stdio.h>
 
-1561172003 /home/cledson/Documents/Labirinto_do_fauno/Exit.h
+1561473131 /home/cledson/Documents/Labirinto_do_fauno/Exit.h
 	"Position.h"
 	"Maze.h"
+	"Player.h"
 
-1561387437 source:/home/cledson/Documents/Labirinto_do_fauno/main.c
+1561638860 source:/home/cledson/Documents/Labirinto_do_fauno/main.c
 	<stdio.h>
 	<stdlib.h>
 	"Maze.h"
@@ -91,7 +93,7 @@
 	"Enemy.h"
 	"Exit.h"
 
-1561213076 /home/cledson/Documents/Labirinto_do_fauno/Player.h
+1561490801 /home/cledson/Documents/Labirinto_do_fauno/Player.h
 	"Position.h"
 	"Maze.h"
 
@@ -100,7 +102,7 @@
 	<stdlib.h>
 	<stdio.h>
 
-1561387208 source:/home/cledson/Documents/Labirinto_do_fauno/Player.c
+1561496384 source:/home/cledson/Documents/Labirinto_do_fauno/Player.c
 	"Player.h"
 	<stdlib.h>
 
