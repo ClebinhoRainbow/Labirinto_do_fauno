@@ -110,3 +110,105 @@
 	"Position.h"
 	<stdlib.h>
 
+1561673929 source:/home/baqueta/Desktop/Labirinto_do_fauno/Enemy.c
+	"Enemy.h"
+	"Player.h"
+	<stdlib.h>
+	<stdio.h>
+
+1561657146 /home/baqueta/Desktop/Labirinto_do_fauno/Enemy.h
+	"Position.h"
+	"Maze.h"
+	"Player.h"
+
+1561639694 /home/baqueta/Desktop/Labirinto_do_fauno/Position.h
+
+1561639716 /home/baqueta/Desktop/Labirinto_do_fauno/Maze.h
+	"Position.h"
+
+1561639696 /home/baqueta/Desktop/Labirinto_do_fauno/Player.h
+	"Position.h"
+	"Maze.h"
+
+1561658114 source:/home/baqueta/Desktop/Labirinto_do_fauno/Exit.c
+	"Exit.h"
+	<stdio.h>
+
+1561639696 /home/baqueta/Desktop/Labirinto_do_fauno/Exit.h
+	"Position.h"
+	"Maze.h"
+	"Player.h"
+
+1561673733 source:/home/baqueta/Desktop/Labirinto_do_fauno/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Maze.h"
+	"Player.h"
+	"Enemy.h"
+	"Exit.h"
+
+1561670602 source:/home/baqueta/Desktop/Labirinto_do_fauno/Maze.c
+	"Maze.h"
+	<stdlib.h>
+	<stdio.h>
+
+1561670589 source:/home/baqueta/Desktop/Labirinto_do_fauno/Player.c
+	"Player.h"
+	<stdlib.h>
+	<stdio.h>
+
+1561639698 source:/home/baqueta/Desktop/Labirinto_do_fauno/Position.c
+	"Position.h"
+	<stdlib.h>
+
+1561673929 source:/home/cledson/Downloads/Labirinto_do_fauno/Enemy.c
+	"Enemy.h"
+	"Player.h"
+	<stdlib.h>
+	<stdio.h>
+
+1561657146 /home/cledson/Downloads/Labirinto_do_fauno/Enemy.h
+	"Position.h"
+	"Maze.h"
+	"Player.h"
+
+1561639694 /home/cledson/Downloads/Labirinto_do_fauno/Position.h
+
+1561639716 /home/cledson/Downloads/Labirinto_do_fauno/Maze.h
+	"Position.h"
+
+1561639696 /home/cledson/Downloads/Labirinto_do_fauno/Player.h
+	"Position.h"
+	"Maze.h"
+
+1561658114 source:/home/cledson/Downloads/Labirinto_do_fauno/Exit.c
+	"Exit.h"
+	<stdio.h>
+
+1561639696 /home/cledson/Downloads/Labirinto_do_fauno/Exit.h
+	"Position.h"
+	"Maze.h"
+	"Player.h"
+
+1561673733 source:/home/cledson/Downloads/Labirinto_do_fauno/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Maze.h"
+	"Player.h"
+	"Enemy.h"
+	"Exit.h"
+
+1561670602 source:/home/cledson/Downloads/Labirinto_do_fauno/Maze.c
+	"Maze.h"
+	<stdlib.h>
+	<stdio.h>
+
+1561670589 source:/home/cledson/Downloads/Labirinto_do_fauno/Player.c
+	"Player.h"
+	<stdlib.h>
+	<stdio.h>
+
+1561639698 source:/home/cledson/Downloads/Labirinto_do_fauno/Position.c
+	"Position.h"
+	<stdlib.h>
+

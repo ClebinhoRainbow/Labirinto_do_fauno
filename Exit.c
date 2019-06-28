@@ -17,6 +17,7 @@ saida->simbolo_exibido='S';
 
                 saida->posicao_saida_matriz.x= i;
                 saida->posicao_saida_matriz.y= j;
+                printf("%d x %d y ",saida->posicao_saida_matriz.x,saida->posicao_saida_matriz.y);
 
 
 
